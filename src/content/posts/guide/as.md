@@ -49,3 +49,5 @@ src/content/posts/
     ├── cover.png
     └── index.md
 ```
+
+[[../video#bilibili]]

@@ -6,7 +6,7 @@ import { getSortedPosts } from '@utils/content-utils.ts'
 const parser = new MarkdownIt()
 
 export async function GET(context: any) {
-  const blog = await getSortedPosts()
+  const blog = (await getSortedPosts()).slice(0, 20)
   return rss({
     title: siteConfig.title,
     description: siteConfig.subtitle || 'No description',

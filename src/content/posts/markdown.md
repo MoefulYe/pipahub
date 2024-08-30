@@ -164,3 +164,28 @@ $$I = \int \rho R^{2} dV$$
 
 And note that you can backslash-escape any punctuation characters
 which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
+
+[[video#youtube]]
+```mermaid
+graph LR;
+    A--> B & C & D;
+    B--> A & E;
+    C--> A & E;
+    D--> A & E;
+    E--> B & C & D;
+```
+```cpp
+template <typename T> struct Box {
+private:
+  T *value;
+  template <typename... Args> Box(T *p) : value(p){};
+
+public:
+  ~Box() { delete value; };
+  auto operator->() -> T * { return value; };
+  auto operator*() -> T & { return *value; };
+  template <typename... Args> static auto make(Args &&...args) -> Box<T> {
+    return Box<T>(new T(std::forward<Args>(args)...));
+  }
+};
+```

@@ -15,9 +15,11 @@ import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-di
 import remarkMath from "remark-math"
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs"
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs"
-import {parseDirectiveNode} from "./src/plugins/remark-directive-rehype.js";
+import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs"
-import {remarkExcerpt} from "./src/plugins/remark-excerpt.js";
+import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
+import { remarkObsidian } from './src/plugins/remark-obsidian'
+import { remarkMermaid } from './src/plugins/remark-mermaid'
 
 const oklchToHex = (str) => {
   const DEFAULT_HUE = 250
@@ -39,8 +41,8 @@ export default defineConfig({
     swup({
       theme: false,
       animationClass: 'transition-swup-',   // see https://swup.js.org/options/#animationselector
-                                            // the default value `transition-` cause transition delay
-                                            // when the Tailwind class `transition-all` is used
+      // the default value `transition-` cause transition delay
+      // when the Tailwind class `transition-all` is used
       containers: ['main'],
       smoothScrolling: true,
       cache: true,
@@ -69,7 +71,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime, remarkExcerpt, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode],
+    remarkPlugins: [remarkMath, remarkReadingTime, remarkExcerpt, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode, remarkObsidian, remarkMermaid],
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,
