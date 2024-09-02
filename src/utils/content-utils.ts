@@ -34,20 +34,18 @@ export async function getTagList(): Promise<Tag[]> {
     return import.meta.env.PROD ? data.draft !== true : true
   })
 
-  const countMap: { [key: string]: number } = {}
+  const countMap = new Map<string, number>()
   allBlogPosts.map(post => {
     post.data.tags.map((tag: string) => {
-      if (!countMap[tag]) countMap[tag] = 0
-      countMap[tag]++
+      const cnt = countMap.get(tag) ?? 0
+      countMap.set(tag, cnt + 1)
     })
   })
-
-  // sort tags
-  const keys: string[] = Object.keys(countMap).sort((a, b) => {
-    return a.toLowerCase().localeCompare(b.toLowerCase())
-  })
-
-  return keys.map(key => ({ name: key, count: countMap[key] }))
+  const list = [...countMap].sort(([_, a], [__, b]) => b - a).map(([name, count]) => ({
+    name,
+    count
+  }))
+  return list
 }
 
 export type Category = {
