@@ -52,7 +52,7 @@ const getPageUrl = (p: number) => {
 }
 ---
 
-<div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
+<div class:list={[className, "flex flex-row gap-3 justify-center p-1"]} style={style}>
     <a href={url(page.url.prev || "")} aria-label={page.url.prev ? "Previous Page" : null}
        class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
            {"disabled": page.url.prev == undefined}
@@ -75,7 +75,7 @@ const getPageUrl = (p: number) => {
             >{p}</a>
         })}
     </div>
-    <input id="quick-jumper" class="transition-all bg-[var(--card-bg)] text-black/50 dark:text-white/50 rounded-lg w-24 px-4 hover:ring-2 active:ring-2 ring-[var(--primary)] duration-200" placeholder={i18n(I18nKey.QuickJumpTo)}>
+    <input id="quick-jumper" class="transition-all bg-[var(--card-bg)] text-black/50 dark:text-white/50 rounded-lg w-24 px-4 ring-0 hover:ring-2 active:ring-2  duration-200 focus:outline-none ring-[hsl(var(--hue),25%,75%)]" placeholder={i18n(I18nKey.quickJumpTo)}>
     <a href={url(page.url.next || "")} aria-label={page.url.next ? "Next Page" : null}
        class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
            {"disabled": page.url.next == undefined}

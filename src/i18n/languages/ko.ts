@@ -35,5 +35,6 @@ export const ko: Translation = {
   [Key.author]: '저자',
   [Key.publishedAt]: '게시일',
   [Key.license]: '라이선스',
-  [Key.QuickJumpTo]: '빠른 이동'
+  [Key.quickJumpTo]: '빠른 이동',
+  [Key.linkGraph]: '링크 그래프',
 }

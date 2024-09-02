@@ -32,7 +32,9 @@ enum I18nKey {
   author = 'author',
   publishedAt = 'publishedAt',
   license = 'license',
-  QuickJumpTo = 'quickJumpTo',
+  quickJumpTo = 'quickJumpTo',
+  // 关系图
+  linkGraph = '关系图'
 }
 
 export default I18nKey

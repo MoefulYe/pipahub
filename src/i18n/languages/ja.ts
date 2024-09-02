@@ -35,5 +35,6 @@ export const ja: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '公開日',
   [Key.license]: 'ライセンス',
-  [Key.QuickJumpTo]: 'クイックジャンプ'
+  [Key.quickJumpTo]: 'クイックジャンプ',
+  [Key.linkGraph]: 'リンクグラフ',
 }

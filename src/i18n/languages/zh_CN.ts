@@ -35,5 +35,6 @@ export const zh_CN: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '发布于',
   [Key.license]: '许可协议',
-  [Key.QuickJumpTo]: '跳转到'
+  [Key.quickJumpTo]: '跳转到',
+  [Key.linkGraph]: '链接图',
 }

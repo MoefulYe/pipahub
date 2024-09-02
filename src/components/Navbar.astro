@@ -1,10 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components'
-import DisplaySettings from './widget/DisplaySettings.svelte'
+import DisplaySettings from './widget/DisplaySettings.vue'
 import { LinkPreset, type NavBarLink } from '../types/config'
 import { navBarConfig, siteConfig } from '../config'
 import NavMenuPanel from './widget/NavMenuPanel.astro'
-import Search from './Search.svelte'
+import Search from './Search.vue'
 import { LinkPresets } from '../constants/link-presets'
 import LightDarkSwitch from './LightDarkSwitch.vue'
 import { url } from '../utils/url-utils'
@@ -61,7 +61,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
             </button>
         </div>
         <NavMenuPanel links={links}></NavMenuPanel>
-        <DisplaySettings client:only="svelte">
+        <DisplaySettings client:load>
             <Icon slot="restore-icon" name="fa6-solid:arrow-rotate-left" class="text-[0.875rem]"></Icon>
         </DisplaySettings>
     </div>
@@ -83,7 +83,7 @@ function switchTheme() {
 }
 
 function loadButtonScript() {
-    let switchBtn = document.getElementById("");
+    let switchBtn = document.getElementById("theme-switch");
     switchBtn!.addEventListener("click", function () {
         switchTheme()
     });
@@ -116,7 +116,6 @@ async function loadPagefind() {
     })
     pagefind.init()
     window.pagefind = pagefind
-    pagefind.search('')     // speed up the first search
 }
 loadPagefind()
 </script>}
