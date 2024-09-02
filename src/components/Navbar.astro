@@ -6,7 +6,7 @@ import { navBarConfig, siteConfig } from '../config'
 import NavMenuPanel from './widget/NavMenuPanel.astro'
 import Search from './Search.svelte'
 import { LinkPresets } from '../constants/link-presets'
-import LightDarkSwitch from './LightDarkSwitch.svelte'
+import LightDarkSwitch from './LightDarkSwitch.vue'
 import { url } from '../utils/url-utils'
 const className = Astro.props.class
 
@@ -83,7 +83,7 @@ function switchTheme() {
 }
 
 function loadButtonScript() {
-    let switchBtn = document.getElementById("scheme-switch");
+    let switchBtn = document.getElementById("");
     switchBtn!.addEventListener("click", function () {
         switchTheme()
     });

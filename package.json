@@ -19,8 +19,8 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/svelte": "^5.7.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource-variable/jetbrains-mono": "^5.0.21",
-    "@fontsource/roboto": "^5.0.13",
+    "@astrojs/vue": "^4.5.0",
+    "@iconify/vue": "^4.1.2",
     "@swup/astro": "^1.4.1",
     "astro": "^4.12.2",
     "astro-compress": "^2.3.0",
@@ -46,7 +46,8 @@
     "svelte": "^4.2.18",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "vue": "^3.4.38"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.9.0",

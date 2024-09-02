@@ -1,5 +1,6 @@
 import sitemap from '@astrojs/sitemap';
 import svelte from "@astrojs/svelte"
+import vue from '@astrojs/vue'
 import tailwind from "@astrojs/tailwind"
 import swup from '@swup/astro';
 import Compress from "astro-compress"
@@ -62,6 +63,7 @@ export default defineConfig({
     }),
     svelte(),
     sitemap(),
+    vue(),
     Compress({
       CSS: false,
       Image: false,
