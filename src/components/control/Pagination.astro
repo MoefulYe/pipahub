@@ -88,10 +88,12 @@ const getPageUrl = (p: number) => {
 <script>
 import { url } from "@utils/url-utils"
 
-document.getElementById('quick-jumper')?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const p = parseInt((e.target as HTMLInputElement).value)
-    window.location.href = url(p === 1 ? '/' : `/${p}/`)
-  }
+window.addEventListener('load', () => {
+  document.getElementById('quick-jumper')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const p = parseInt((e.target as HTMLInputElement).value)
+      window.location.href = url(p === 1 ? '/' : `/${p}/`)
+    }
+  })
 })
 </script>

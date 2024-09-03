@@ -37,4 +37,5 @@ export const ja: Translation = {
   [Key.license]: 'ライセンス',
   [Key.quickJumpTo]: 'クイックジャンプ',
   [Key.linkGraph]: 'リンクグラフ',
+  [Key.toc]: '目次',
 }

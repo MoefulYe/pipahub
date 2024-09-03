@@ -13,7 +13,7 @@ const GRAPH_OPT =
     label: {
         show: true,
         position: 'bottom',
-        color: '#666769'
+        color: '#666769',
     },
     edgeSymbol: ['circle', 'arrow'],
     edgeSymbolSize: [4, 8],

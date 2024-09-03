@@ -37,4 +37,5 @@ export const zh_TW: Translation = {
   [Key.license]: '許可協議',
   [Key.quickJumpTo]: '跳轉到',
   [Key.linkGraph]: '鏈接圖',
+  [Key.toc]: '目錄',
 }

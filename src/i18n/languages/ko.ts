@@ -37,4 +37,5 @@ export const ko: Translation = {
   [Key.license]: '라이선스',
   [Key.quickJumpTo]: '빠른 이동',
   [Key.linkGraph]: '링크 그래프',
+  [Key.toc]: '목차',
 }

@@ -1,14 +1,47 @@
 ---
+import InteractiveGraph from './InteractiveGraph.astro'
 import Profile from './Profile.astro'
 import Tag from './Tags.astro'
+import Toc from './Toc.astro'
+import { type InferPropsAndOmit } from '@/types/utils'
 
-const className = Astro.props.class
+type Omited = 'class' | 'style'
+
+interface SideWidgetMap {
+    toc: InferPropsAndOmit<typeof Toc, Omited>
+    tag: InferPropsAndOmit<typeof Tag, Omited>
+    linkGraph: InferPropsAndOmit<typeof InteractiveGraph, Omited>
+}
+
+type SideWidget = {
+    [K in keyof SideWidgetMap]: SideWidgetMap[K] & { type: K }
+}[keyof SideWidgetMap]
+export type SideWidgets = SideWidget[]
+
+interface Props {
+    class: string,
+    widgets: SideWidgets
+}
+
+const { class: className, widgets } = Astro.props
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
     </div>
     <div class="flex flex-col w-full gap-4 sticky top-4">
-        <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
+        {
+            widgets.map((widget, idx) => {
+                const className = 'onload-animation'
+                const style = `animation-delay: ${100 + 50 * idx}ms`
+                if (widget.type === 'toc') {
+                    return <Toc toc={widget.toc} class={className} style={style}/> 
+                } else if (widget.type === 'linkGraph') {
+                    return <InteractiveGraph highlight={widget.highlight} class={className} style={style}/>
+                } else { // tag
+                    return <Tag class={className} style={style}/>
+                }
+            })    
+        }
     </div>
 </div>

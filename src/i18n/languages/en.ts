@@ -37,4 +37,5 @@ export const en: Translation = {
   [Key.license]: 'License',
   [Key.quickJumpTo]: 'Jump to',
   [Key.linkGraph]: 'Link Graph',
+  [Key.toc]: 'TOC',
 }

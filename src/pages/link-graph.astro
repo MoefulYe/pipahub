@@ -1,19 +1,16 @@
 ---
-import { i18n } from "@i18n/translation";
-import WidgetLayout from "./WidgetLayout.astro";
-import I18nKey from "@i18n/i18nKey";
-
-interface Props {
-    class?: string
-    style?: string
-    highlight?: string
-}
-const {highlight, ...rest} = Astro.props
+import MainGridLayout from '../layouts/MainGridLayout.astro'
+import { i18n } from '../i18n/translation'
+import I18nKey from '../i18n/i18nKey'
+import type { SideWidgets } from '@components/widget/SideBar.astro'
+const sideWidgets:  SideWidgets = [{type: 'tag'}]
 ---
-
-<WidgetLayout name={i18n(I18nKey.linkGraph)} id="link-graph" isCollapsed={false} {...rest}>
-    <div class="h-48" id="graph-container" data-slug={highlight}></div>
-</WidgetLayout>
+<MainGridLayout title={i18n(I18nKey.linkGraph)} description={i18n(I18nKey.linkGraph)} sideWidgets={sideWidgets}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-[75vh]">
+        <div class="card-base z-10 px-9 py-6 relative w-full" id="interactive-graph">
+        </div>
+    </div>
+</MainGridLayout>
 
 <script>
 import { use, init } from 'echarts/core'
@@ -23,10 +20,10 @@ import type { ComposeOption } from 'echarts/core'
 import type { GraphSeriesOption } from 'echarts/charts'
 
 use([GraphChart, CanvasRenderer])
-
 type ChartOption = ComposeOption<GraphSeriesOption>
+
 window.addEventListener('load', () => {
-    const container = document.getElementById('graph-container')
+    const container = document.getElementById('interactive-graph')
     if (import.meta.env.PROD) {
         const graph = init(container)
         fetch('/link-graph.json')
@@ -44,14 +41,6 @@ window.addEventListener('load', () => {
             }
         })
         window.addEventListener('resize', () => graph.resize())
-        const slug = container?.dataset.slug
-        if (slug !== undefined) {
-            graph.dispatchAction({
-                type: 'highlight',
-                seriesIndex: 0,
-                name: slug
-            }) 
-        }
     }
 })
 </script>

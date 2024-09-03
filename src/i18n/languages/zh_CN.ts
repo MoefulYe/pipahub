@@ -37,4 +37,5 @@ export const zh_CN: Translation = {
   [Key.license]: '许可协议',
   [Key.quickJumpTo]: '跳转到',
   [Key.linkGraph]: '链接图',
+  [Key.toc]: '目录',
 }

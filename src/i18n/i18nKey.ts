@@ -34,7 +34,8 @@ enum I18nKey {
   license = 'license',
   quickJumpTo = 'quickJumpTo',
   // 关系图
-  linkGraph = '关系图'
+  linkGraph = 'linkGraph',
+  toc = 'toc',
 }
 
 export default I18nKey

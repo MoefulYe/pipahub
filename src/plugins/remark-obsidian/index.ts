@@ -13,10 +13,9 @@ export const remarkObsidian: RemarkPlugin = () => {
             if (filename !== undefined) {
                 linkTo.push(filename)
             }
-            const href = filename !== undefined ? `${filename}/#${fragment ?? ''}` : `#${fragment ?? ''}`
-            const hrefWithLeadingDoubleDot = `../${href}`
-            const text = customText === undefined ? href : customText
-            const a = `<a href=${hrefWithLeadingDoubleDot}>${text}</a>`
+            const href = filename !== undefined ? `../${filename}/#${fragment ?? ''}` : `#${fragment ?? ''}`
+            const text = customText === undefined ? filename !== undefined ? `${filename}${fragment === undefined ? '' : `#${fragment}`}` : `#${fragment ?? ''}` : customText
+            const a = `<a href=${href}>${text}</a>`
             return {
                 type: 'html',
                 value: a
