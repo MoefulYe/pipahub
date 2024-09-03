@@ -1,16 +1,14 @@
 ---
+import type { ComponentProps } from 'astro/types'
 import InteractiveGraph from './InteractiveGraph.astro'
 import Profile from './Profile.astro'
 import Tag from './Tags.astro'
 import Toc from './Toc.astro'
-import { type InferPropsAndOmit } from '@/types/utils'
-
-type Omited = 'class' | 'style'
-
+type PropsWithoutClassAndStyle<T extends (props: any) => any> = Omit<ComponentProps<T>,'class' | 'style'>
 interface SideWidgetMap {
-    toc: InferPropsAndOmit<typeof Toc, Omited>
-    tag: InferPropsAndOmit<typeof Tag, Omited>
-    linkGraph: InferPropsAndOmit<typeof InteractiveGraph, Omited>
+    toc: PropsWithoutClassAndStyle<typeof Toc>
+    tag: PropsWithoutClassAndStyle<typeof Tag>
+    linkGraph: PropsWithoutClassAndStyle<typeof InteractiveGraph>
 }
 
 type SideWidget = {

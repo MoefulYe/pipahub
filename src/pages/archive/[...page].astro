@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from "astro";
+import MainGridLayout from '@layouts/MainGridLayout.astro'
+import ArchivePanel from '@components/ArchivePanel.astro'
+import { i18n } from '@i18n/translation'
+import I18nKey from '@i18n/i18nKey'
+import type { SideWidgets } from '@components/widget/SideBar.astro'
+import { getSortedPosts } from "@utils/content-utils";
+import Pagination from "@components/control/Pagination.astro";
+import { ACHRIVE_PAGE_SIZE } from "@constants/constants";
+
+const sideWidgets: SideWidgets = [{ type: 'tag' }, {type: 'linkGraph'}]
+export const getStaticPaths = (async ({paginate}) => {
+    const posts = await getSortedPosts()
+    return paginate(posts, { pageSize: ACHRIVE_PAGE_SIZE })
+}) satisfies GetStaticPaths;
+const { page } = Astro.props
+---
+
+<MainGridLayout title={i18n(I18nKey.archive)} sideWidgets={sideWidgets}>
+    <ArchivePanel posts={page.data}></ArchivePanel>
+    <Pagination class="mx-auto onload-animation mt-4" page={page} base="/archive/"/>
+</MainGridLayout>
+
