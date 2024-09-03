@@ -1,5 +1,4 @@
 ---
-
 import WidgetLayout from './WidgetLayout.astro'
 import ButtonTag from '../control/ButtonTag.astro'
 import { getTagList } from '../../utils/content-utils'
@@ -21,7 +20,7 @@ const style = Astro.props.style
 <WidgetLayout name={i18n(I18nKey.tags)} id="tags" isCollapsed={false} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
     <div class="flex gap-2 flex-wrap">
         {tags.map(({name, count}) => (
-            <ButtonTag href={url(`/archive/tag/${name}/`)} label={`View all posts with the ${name} tag`}>
+            <ButtonTag href={url(`/tag/${name}/`)} label={`View all posts with the ${name} tag`}>
                 {`#${name} ${count}`}
             </ButtonTag>
         ))}

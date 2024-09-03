@@ -8,16 +8,15 @@ interface Props {
   page: Page
   class?: string
   style?: string
+  // 尾随/
+  base?: string
 }
 
-const { page, style } = Astro.props
-
 const HIDDEN = -1
-
-const className = Astro.props.class
-
 const ADJ_DIST = 2
 const VISIBLE = ADJ_DIST * 2 + 1
+
+const { page, style, class: className, base = '/' } = Astro.props
 
 // for test
 let count = 1
@@ -47,8 +46,8 @@ if (r === page.lastPage - 2) pages.push(page.lastPage - 1)
 if (r < page.lastPage) pages.push(page.lastPage)
 
 const getPageUrl = (p: number) => {
-  if (p === 1) return '/'
-  return `/${p}/`
+  if (p === 1) return `${base}`
+  return `${base}${p}/`
 }
 ---
 
@@ -75,7 +74,7 @@ const getPageUrl = (p: number) => {
             >{p}</a>
         })}
     </div>
-    <input id="quick-jumper" class="transition-all bg-[var(--card-bg)] text-black/50 dark:text-white/50 rounded-lg w-24 px-4 ring-0 hover:ring-2 active:ring-2  duration-200 focus:outline-none ring-[hsl(var(--hue),25%,75%)]" placeholder={i18n(I18nKey.quickJumpTo)}>
+    <input id="quick-jumper" data-base={base} class="transition-all bg-[var(--card-bg)] text-black/50 dark:text-white/50 rounded-lg w-24 px-4 ring-0 hover:ring-2 active:ring-2  duration-200 focus:outline-none ring-[hsl(var(--hue),25%,75%)]" placeholder={i18n(I18nKey.quickJumpTo)}>
     <a href={url(page.url.next || "")} aria-label={page.url.next ? "Next Page" : null}
        class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
            {"disabled": page.url.next == undefined}
@@ -86,13 +85,18 @@ const getPageUrl = (p: number) => {
 </div>
 
 <script>
-import { url } from "@utils/url-utils"
+const getPageUrl = (base: string, p: number) => {
+  if (p === 1) return `${base}`
+  return `${base}${p}/`
+}
 
 window.addEventListener('load', () => {
-  document.getElementById('quick-jumper')?.addEventListener('keydown', (e) => {
+  const jumper = document.getElementById('quick-jumper')
+  const base = jumper!.dataset.base!
+  jumper!.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const p = parseInt((e.target as HTMLInputElement).value)
-      window.location.href = url(p === 1 ? '/' : `/${p}/`)
+      window.location.href = getPageUrl(base, p)
     }
   })
 })

@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 const tag = Astro.params.tag as string
-const sideWidgets: SideWidgets = [{ type: 'tag' }, { type: 'linkGraph' }]
+const sideWidgets: SideWidgets = [{ type: 'tag' }]
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)} description={i18n(I18nKey.archive)} sideWidgets={sideWidgets}>

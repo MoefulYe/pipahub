@@ -1,0 +1,25 @@
+---
+import ButtonTag from "@components/control/ButtonTag.astro";
+import type { SideWidgets } from "@components/widget/SideBar.astro";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getTagList } from "@utils/content-utils";
+import { url } from "@utils/url-utils";
+
+const tags = await getTagList()
+const sideWidgets: SideWidgets = []
+---
+<MainGridLayout title={i18n(I18nKey.tags)} description={i18n(I18nKey.tags)} sideWidgets={sideWidgets}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-[33vh]">
+        <div class="card-base z-10 px-9 py-6 relative w-full flex gap-2 flex-wrap content-start">
+            {
+                tags.map(({name, count}) => (
+                    <ButtonTag href={url(`/tag/${name}/`)} label={`View all posts with the ${name} tag`}>
+                        {`#${name} ${count}`}
+                    </ButtonTag>
+                ))
+            }
+        </div>
+    </div>
+</MainGridLayout>

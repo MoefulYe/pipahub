@@ -18,5 +18,9 @@ export const LinkPresets: Record<LinkPreset, NavBarLink> = {
   [LinkPreset.LinkGraph]: {
     name: i18n(I18nKey.linkGraph),
     url: '/link-graph/',
-  }
+  },
+  [LinkPreset.Tag]: {
+    name: i18n(I18nKey.tags),
+    url: '/tag/',
+  },
 }
