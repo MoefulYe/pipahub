@@ -35,7 +35,7 @@ const { class: className, widgets } = Astro.props
                 if (widget.type === 'toc') {
                     return <Toc toc={widget.toc} class={className} style={style}/> 
                 } else if (widget.type === 'linkGraph') {
-                    return <InteractiveGraph highlight={widget.highlight} class={className} style={style}/>
+                    return <InteractiveGraph slug={widget.slug} class={className} style={style}/>
                 } else { // tag
                     return <Tag class={className} style={style}/>
                 }

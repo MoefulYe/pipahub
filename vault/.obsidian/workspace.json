@@ -1,0 +1,250 @@
+{
+  "main": {
+    "id": "17997ba4ad85d29e",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce3df5317c404193",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7caed32ed5125a4d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "contents/计算机组成原理/其他/各种周期.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3303f4eb7c2bd18e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "contents/计算机组成原理/概述/性能指标.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "18af7936023bbe7b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "contents/操作系统/io/io.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7582c1a85739d812",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "assets/img/Pasted image 20240724174704.png"
+              }
+            }
+          },
+          {
+            "id": "23be75ffff5456c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "contents/计算机组成原理/io/io.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9f9735f11a3fe63d",
+    "type": "split",
+    "children": [
+      {
+        "id": "e4ac70672aa4351e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f2b6ed1c877f8846",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "216e4b950435566b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "!",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "335807a3e00fbe14",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c176c83a946315bb",
+    "type": "split",
+    "children": [
+      {
+        "id": "709be839bb3d396e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "561ace1fd7450d3a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "assets/img/Pasted image 20240724174704.png",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f66d972012428514",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "assets/img/Pasted image 20240724174704.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "497983298d9054ea",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "75e60c68e0450c7f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "assets/img/Pasted image 20240724174704.png"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "templater-obsidian:Templater": false,
+      "terminal:Open terminal": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "7582c1a85739d812",
+  "lastOpenFiles": [
+    "assets/img/11AEE1098ECCCE04F7A55792A966E503.png",
+    "assets/img/Pasted image 20240724174704.png",
+    "assets/img/20231003232217.png",
+    "contents/计算机网络/网络层/组播.md",
+    "contents/计算机网络/网络层/路由算法.md",
+    "contents/计算机网络/应用层/邮件.md",
+    "contents/计算机网络/网络层/概述.md",
+    "contents/计算机网络/校验和.md",
+    "contents/计算机组成原理/数字的表示与运算.md",
+    "contents/计算机组成原理/指令/指令格式.md",
+    "contents/计算机网络/链路层/广域网.md",
+    "contents/计算机网络/链路层/差错控制.md",
+    "contents/计算机组成原理/指令/寻址方式.md",
+    "contents/计算机网络/链路层/局域网.md",
+    "contents/计算机组成原理/存储系统/存储系统.md",
+    "contents/计算机网络/可靠传输机制.md",
+    "contents/操作系统/内存虚拟化.md",
+    "contents/计算机组成原理/存储系统/主存储器与cpu连接.md",
+    "contents/计算机网络/链路层/介质访问控制.md",
+    "contents/计算机网络/传输层/udp.md",
+    "contents/计算机网络/传输层/tcp.md",
+    "contents/编译汇编链接二进制/pic调用.md",
+    "contents/编译汇编链接二进制/x86-64汇编.md",
+    "contents/语言/markdown.md",
+    "contents/计算机网络/网络层/ipv6.md",
+    "contents/计算机网络/网络层/ipv4.md",
+    "contents/计算机组成原理/io/io.md",
+    "contents/计算机网络/网络层/icmp.md",
+    "contents",
+    "contents/语言/pl",
+    "contents/语言/cxx",
+    "contents/计算机组成原理/cpu/并行",
+    "assets/img/Pasted image 20240819154855.png",
+    "assets/img/Pasted image 20240819155651.png",
+    "assets/img/Pasted image 20240810204734.png",
+    "contents/计算机组成原理/cpu",
+    "assets/img/Pasted image 20240810191026.png",
+    "assets/img/Pasted image 20240810204550.png",
+    "assets/img/Pasted image 20240810204148.png",
+    "assets/img/Pasted image 20240810204027.png",
+    "assets/img/Pasted image 20240810203854.png",
+    "软件/binutils",
+    "contents/编译汇编链接二进制",
+    "软件/程序分析",
+    "contents/计算机组成原理/指令",
+    "计算机组成原理/总线",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "Untitled.canvas"
+  ]
+}

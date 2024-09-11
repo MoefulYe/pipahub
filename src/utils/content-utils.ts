@@ -1,5 +1,5 @@
-import I18nKey from '@i18n/i18nKey'
-import { i18n } from '@i18n/translation'
+// import I18nKey from '@i18n/i18nKey'
+// import { i18n } from '@i18n/translation'
 import { getCollection } from 'astro:content'
 
 export async function getSortedPosts() {
@@ -7,8 +7,8 @@ export async function getSortedPosts() {
     return import.meta.env.PROD ? data.draft !== true : true
   })
   const sorted = allBlogPosts.sort((a, b) => {
-    const dateA = new Date(a.data.published)
-    const dateB = new Date(b.data.published)
+    const dateA = new Date(a.data.created_at)
+    const dateB = new Date(b.data.created_at)
     return dateA > dateB ? -1 : 1
   })
 
@@ -35,11 +35,14 @@ export async function getTagList(): Promise<Tag[]> {
   })
 
   const countMap = new Map<string, number>()
-  allBlogPosts.map(post => {
-    post.data.tags.map((tag: string) => {
-      const cnt = countMap.get(tag) ?? 0
-      countMap.set(tag, cnt + 1)
-    })
+  allBlogPosts.forEach(post => {
+    const tags = post.data.tags
+    if (tags !== null) {
+      for(const tag of tags) {
+        const cnt = countMap.get(tag) ?? 0
+        countMap.set(tag, cnt + 1)
+      }
+    }
   })
   const list = [...countMap].sort(([_, a], [__, b]) => b - a).map(([name, count]) => ({
     name,
@@ -53,29 +56,29 @@ export type Category = {
   count: number
 }
 
-export async function getCategoryList(): Promise<Category[]> {
-  const allBlogPosts = await getCollection('posts', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true
-  })
-  const count: { [key: string]: number } = {}
-  allBlogPosts.map(post => {
-    if (!post.data.category) {
-      const ucKey = i18n(I18nKey.uncategorized)
-      count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1
-      return
-    }
-    count[post.data.category] = count[post.data.category]
-      ? count[post.data.category] + 1
-      : 1
-  })
+// export async function getCategoryList(): Promise<Category[]> {
+//   const allBlogPosts = await getCollection('posts', ({ data }) => {
+//     return import.meta.env.PROD ? data.draft !== true : true
+//   })
+//   const count: { [key: string]: number } = {}
+//   allBlogPosts.map(post => {
+//     if (!post.data.category) {
+//       const ucKey = i18n(I18nKey.uncategorized)
+//       count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1
+//       return
+//     }
+//     count[post.data.category] = count[post.data.category]
+//       ? count[post.data.category] + 1
+//       : 1
+//   })
 
-  const lst = Object.keys(count).sort((a, b) => {
-    return a.toLowerCase().localeCompare(b.toLowerCase())
-  })
+//   const lst = Object.keys(count).sort((a, b) => {
+//     return a.toLowerCase().localeCompare(b.toLowerCase())
+//   })
 
-  const ret: Category[] = []
-  for (const c of lst) {
-    ret.push({ name: c, count: count[c] })
-  }
-  return ret
-}
+//   const ret: Category[] = []
+//   for (const c of lst) {
+//     ret.push({ name: c, count: count[c] })
+//   }
+//   return ret
+// }

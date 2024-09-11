@@ -16,7 +16,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props
 
 const len = page.data.length
-const sideWidgets: SideWidgets = [{ type: 'tag' }, { type: 'linkGraph' }]
+const sideWidgets: SideWidgets = [{ type: 'tag' }]
 ---
 
 <MainGridLayout sideWidgets={sideWidgets}>

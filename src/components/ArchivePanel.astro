@@ -33,7 +33,7 @@ const { posts } = Astro.props
 const groups: { year: number; posts: typeof posts }[] = (function () {
   const groupedPosts = posts.reduce(
     (grouped: { [year: number]: typeof posts }, post) => {
-      const year = post.data.published.getFullYear()
+      const year = post.data.created_at.getFullYear()
       if (!grouped[year]) {
         grouped[year] = []
       }
@@ -84,7 +84,7 @@ function formatTag(tag: string[]) {
                         <div class="flex flex-row justify-start items-center h-full">
                             <!-- date -->
                             <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
-                                {formatDate(post.data.published)}
+                                {formatDate(post.data.created_at)}
                             </div>
                             <!-- dot and line -->
                             <div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-center">
@@ -108,7 +108,7 @@ function formatTag(tag: string[]) {
                             <div class="hidden md:block md:w-[15%] text-left text-sm transition
                             whitespace-nowrap overflow-ellipsis overflow-hidden
                             text-30"
-                            >{formatTag(post.data.tags)}</div>
+                            >{formatTag(post.data.tags ?? [])}</div>
                         </div>
                     </a>
                 ))}

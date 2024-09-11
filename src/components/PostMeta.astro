@@ -7,12 +7,11 @@ import { url } from '../utils/url-utils'
 
 interface Props {
   class: string
-  published: Date
-  tags: string[]
-  category: string
+  created_at: Date
+  tags: string[] | null
   hideTagsForMobile?: boolean
 }
-const { published, tags, category, hideTagsForMobile = false } = Astro.props
+const { created_at, tags , hideTagsForMobile = false } = Astro.props
 const className = Astro.props.class
 ---
 
@@ -23,7 +22,7 @@ const className = Astro.props.class
         >
             <Icon name="material-symbols:calendar-today-outline-rounded" class="text-xl"></Icon>
         </div>
-        <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(published)}</span>
+        <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(created_at)}</span>
     </div>
 
     <!-- categories -->
@@ -32,13 +31,13 @@ const className = Astro.props.class
         >
             <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
         </div>
-        <div class="flex flex-row flex-nowrap items-center">
+        <!-- <div class="flex flex-row flex-nowrap items-center">
             <a href={url(`/archive/category/${category || 'uncategorized'}/`)} aria-label=`View all posts in the ${category} category`
                class="link-lg transition text-50 text-sm font-medium
                             hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
                 {category || i18n(I18nKey.uncategorized)}
             </a>
-        </div>
+        </div> -->
     </div>
 
     <!-- tags -->
@@ -50,7 +49,7 @@ const className = Astro.props.class
         <div class="flex flex-row flex-nowrap items-center">
             {(tags && tags.length > 0) && tags.map((tag, i) => (
                 <div class:list={[{"hidden": i == 0}, "mx-1.5 text-[var(--meta-divider)] text-sm"]}>/</div>
-                <a href={url(`/archive/tag/${tag}/`)} aria-label=`View all posts with the ${tag} tag`
+                <a href={url(`/tag/${tag}/`)} aria-label=`View all posts with the ${tag} tag`
                    class="link-lg transition text-50 text-sm font-medium
                                 hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
                     {tag}

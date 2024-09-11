@@ -10,7 +10,10 @@ export async function getStaticPaths() {
   let posts = await getSortedPosts()
 
   const allTags = posts.reduce((acc, post) => {
-    post.data.tags.forEach(tag => acc.add(tag))
+    const tags = post.data.tags
+    if (tags !== null) {
+      tags.forEach(tag => acc.add(tag))
+    }
     return acc
   }, new Set<string>())
 
@@ -26,8 +29,8 @@ export async function getStaticPaths() {
 }
 
 const { tag }= Astro.params
-const sideWidgets: SideWidgets = [{type: 'linkGraph'},{ type: 'tag' }]
-const posts = (await getSortedPosts()).filter((post) => post.data.tags.includes(tag))
+const sideWidgets: SideWidgets = [{ type: 'tag' }]
+const posts = (await getSortedPosts()).filter(({data: {tags}}) => tags !== null && tags.includes(tag))
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)} description={i18n(I18nKey.archive)} sideWidgets={sideWidgets}>

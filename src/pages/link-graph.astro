@@ -16,24 +16,19 @@ const sideWidgets:  SideWidgets = [{type: 'tag'}]
 import { use, init } from 'echarts/core'
 import { GraphChart } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import type { ComposeOption } from 'echarts/core'
-import type { GraphSeriesOption } from 'echarts/charts'
+import { chartOpts } from '@/link-graph/options'
 
 use([GraphChart, CanvasRenderer])
-type ChartOption = ComposeOption<GraphSeriesOption>
-
 window.addEventListener('load', () => {
     const container = document.getElementById('interactive-graph')
     if (import.meta.env.PROD) {
         const graph = init(container)
         fetch('/link-graph.json')
             .then(resp => resp.json())
-            .then((json: ChartOption) => {
+            .then(({nodes, edges}) => {
                 const color = `hsl(${window.document.documentElement.style.getPropertyValue('--hue')}, 25%, 75%)`;
-                (json as any).series[0].emphasis.itemStyle.color = color;
-                (json as any).series[0].emphasis.lineStyle.color = color;
-                (json as any).series[0].label.formatter = ({ data }: any) => data.title
-                graph.setOption(json)
+                const opts = chartOpts(nodes, edges, color) 
+                graph.setOption(opts)
             })
         graph.on('click', ({dataType, data}) => {
             if (dataType === 'node') {

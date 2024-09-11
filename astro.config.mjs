@@ -34,7 +34,7 @@ const oklchToHex = (str) => {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fuwari.vercel.app/",
+  site: "https://blog.pipago360.site/",
   base: "/",
   trailingSlash: "always",
   integrations: [
@@ -70,6 +70,14 @@ export default defineConfig({
       Action: {
         Passed: async () => true,   // https://github.com/PlayForm/Compress/issues/376
       },
+      HTML: {
+        'html-minifier-terser': {
+          ignoreCustomFragments: [
+            // 防止压行导致mermaid语法出错
+            /<div class="mermaid"[\s\S]*?\/div>/
+          ]
+        }
+      }
     }),
   ],
   markdown: {

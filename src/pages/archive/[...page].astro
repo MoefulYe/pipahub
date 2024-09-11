@@ -9,7 +9,7 @@ import { getSortedPosts } from "@utils/content-utils";
 import Pagination from "@components/control/Pagination.astro";
 import { ACHRIVE_PAGE_SIZE } from "@constants/constants";
 
-const sideWidgets: SideWidgets = [{ type: 'tag' }, {type: 'linkGraph'}]
+const sideWidgets: SideWidgets = [{ type: 'tag' }]
 export const getStaticPaths = (async ({paginate}) => {
     const posts = await getSortedPosts()
     return paginate(posts, { pageSize: ACHRIVE_PAGE_SIZE })

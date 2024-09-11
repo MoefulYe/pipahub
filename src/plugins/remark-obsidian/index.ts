@@ -3,7 +3,7 @@ import { findAndReplace } from 'mdast-util-find-and-replace'
 import { visit } from "unist-util-visit";
 
 // [[<filename><#fragment><|custom-text>]] 三个部分都是可选的
-const LINK_RE = /\[\[([^\]]+?)(?:#([^\]]+?))?(?:\|([^\]]+?))?\]\]/g
+const LINK_RE = /\[\[([^\]#]+?)?(?:#([^\]]+?))?(?:\|([^\]]+?))?\]\]/g
 
 
 export const remarkObsidian: RemarkPlugin = () => {

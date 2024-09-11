@@ -1,40 +1,7 @@
+import { resolveGraph, type Graph } from "@/link-graph"
 import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
 
-const GRAPH_OPT =
-{
-    type: 'graph',
-    layout: 'force',
-    force: {
-        repulsion: 750
-    },
-    symbolSize: 15,
-    roam: true,
-    label: {
-        show: true,
-        position: 'bottom',
-        color: '#666769',
-    },
-    edgeSymbol: ['circle', 'arrow'],
-    edgeSymbolSize: [4, 8],
-    lineStyle: {
-        opacity: 0.75,
-        width: 1,
-        curveness: 0
-    },
-    itemStyle: {
-        color: '#C3C4C6'
-    },
-    emphasis: {
-        focus: 'adjacency',
-        itemStyle: {
-            color: 'hsl(285, 25%, 75%)'
-        },
-        lineStyle: {
-            color: 'hsl(285, 100%, 95%)'
-        }
-    },
-}
 const absPath = (cwd: string, rel: string) => {
     if (rel.startsWith('/')) {
         return rel
@@ -53,6 +20,7 @@ const absPath = (cwd: string, rel: string) => {
 }
 
 export const GET: APIRoute = async () => {
+    const graph: Graph = new Map()
     const posts = await getCollection('posts', ({ data }) => {
         return import.meta.env.PROD ? data.draft !== true : true
     })
@@ -61,35 +29,35 @@ export const GET: APIRoute = async () => {
         const title = post.data.title
         const { remarkPluginFrontmatter } = await post.render()
         const linkTo = (remarkPluginFrontmatter.linkTo as string[]).map(rel => absPath(slug, rel))
-        const symbolSize = Math.ceil(-50 / (5 + linkTo.length) + 20)
         return {
             slug,
             title,
             linkTo,
-            symbolSize
         }
     }))
-    const nodes = data.map(({ slug: name, title, symbolSize }) => ({
+    const nodes = data.map(({ slug: name, title }) => ({
         name,
         title,
-        symbolSize
     }))
     const edges = data.flatMap(({ slug: source, linkTo }) => linkTo.map(target => ({
         source,
         target
     })))
-    const graph = {
-        ...GRAPH_OPT,
+    for(const {source, target} of edges) {
+        if (!graph.has(source)) {
+            graph.set(source, { linkTo: [], referedBy: [] })
+        }
+        if (!graph.has(target)) {
+            graph.set(target, { linkTo: [], referedBy: [] })
+        }
+        const sourceNode = graph.get(source)!
+        const targetNode = graph.get(target)!
+        sourceNode.linkTo.push(target)
+        targetNode.referedBy.push(source)
+    }
+    resolveGraph(graph)
+    return Response.json({
         nodes,
         edges
-    }
-    const opts = {
-        animationDurationUpdate: 1500,
-        animationEasingUpdate: 'quinticInOut',
-        emphasis: {},
-        series: [
-            graph
-        ]
-    }
-    return Response.json(opts)
+    })
 }
