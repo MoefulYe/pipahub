@@ -1,7 +1,7 @@
 ---
 created_at: 2024-09-13
-title: 
-tags: 
+title: kmp
+tags:
 ---
 ## 概念
 - (真)前缀
