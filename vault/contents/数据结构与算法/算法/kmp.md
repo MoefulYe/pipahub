@@ -20,8 +20,8 @@ make_next(s) {
 		//自身可能还有两个相同的前后缀子串那么比较前缀的前缀的后面一个元素是否与s[i]相等
 		//这样的过程是能一直迭代下去的，迭代的终止条件是j===0,此时不存在相同的前后缀
 		while j > 0 and s[j] !== s[i] { j = next[j-1] }
-		if s[j] === s[i] { next[i] = 0 }
-		else { next[i] = j + 1 }
+		if s[j] === s[i] { next[i] = j + 1 }
+		else { next[i] = 0 }
 	}
 	return next
 }
